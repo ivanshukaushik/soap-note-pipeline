@@ -51,6 +51,7 @@ This pipeline emphasizes:
 ```bash
 pip install openai python-dotenv
 brew install pandoc  # or use apt/choco if on Linux/Windows
+brew install graphviz # for the visualisation of flowchart for part 2
 ```
 
 ### Step 2: Add your API key

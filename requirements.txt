@@ -5,3 +5,5 @@ python-dotenv
 torch
 markdown 
 pdfkit
+graphviz
+pydot
