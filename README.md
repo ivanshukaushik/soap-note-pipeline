@@ -11,6 +11,7 @@ Given a transcript of a medical encounter (e.g., `encounter_1.txt`), this pipeli
 2. Segregates it into `Subjective`, `Objective`, `Assessment`, and `Plan` sections
 3. Formats the result into a clean Markdown-based SOAP note
 4. Optionally converts it to PDF using `pandoc`
+5. Strips duplicate headers and preserves LLM output when applicable
 
 ---
 
@@ -21,6 +22,7 @@ This pipeline emphasizes:
 - **Determinism**, via prompt engineering and low temperature sampling
 - **Composability**, so individual modules (e.g., formatting, extraction, conversion) can be swapped or extended
 - **LLM-efficiency**, by using LLMs only for tasks that truly require reasoning
+- **Preservation of critical clinical fields**, especially avoiding any unintended modifications to fields like `Diagnosis`
 
 ---
 
@@ -77,6 +79,7 @@ The prompt is structured to:
 - Instruct the LLM to output in clinical style
 - Mimic real SOAP note language and tone
 - Leave placeholders blank if not present in the input
+- Avoid unnecessary speculation or hallucination
 
 Temperature is set to `0.3` to encourage consistent, factual outputs.
 
@@ -85,11 +88,13 @@ Temperature is set to `0.3` to encourage consistent, factual outputs.
 ## 🪄 Post-Processing
 
 After generation, we:
-- Fill in header fields like name, DOB, and today's date using regex
+- Fill in header fields like name and DOB using regex and LLM fallback
+- Preserve fields like `Diagnosis` as-is from LLM output (no overwriting)
+- Strip duplicated headers if present in raw LLM output
 - Format headings as `### Subjective`, etc.
-- Save both `.md` and `.pdf` formats for flexibility
+- Save both `.md` and optionally `.pdf` formats for downstream use
 
-This separation of concerns makes the pipeline modular and clean.
+This separation of concerns makes the pipeline modular, maintainable, and safe for sensitive fields.
 
 ---
 
@@ -99,6 +104,7 @@ This separation of concerns makes the pipeline modular and clean.
 - **Ambiguity**: If transcripts are ambiguous or noisy, outputs may be inconsistent.
 - **Edge case formatting**: Markdown/PDF rendering may break if user adds emojis, unusual punctuation, etc.
 - **No cross-document memory**: The model doesn't yet learn from multiple transcripts or carry history.
+- **Diagnosis field protection** means that missing diagnoses are not auto-filled, even if LLM could infer them.
 
 ---
 
@@ -123,8 +129,8 @@ Pull requests welcome! Let us know if you:
 
 ## 👨‍⚕️ Authors
 
-Developed by [Ivanshu Kaushik](https://www.linkedin.com/in/ivanshukaushik/),  
-with feedback from clinicians and engineers at Cofactor AI.
+Developed by [Ivanshu Kaushik],  
+
 
 ---
 
