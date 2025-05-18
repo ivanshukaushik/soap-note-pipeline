@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+mle/
+env/
+venv/
+
+# API Keys / Secrets
+.env
+
+# macOS metadata
+.DS_Store
+
+# Output files
+outputs/
+*.pdf
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+
+# VSCode or JetBrains configs
+.vscode/
+.idea/
+
+# Other
+*.zip
