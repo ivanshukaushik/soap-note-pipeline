@@ -12,8 +12,9 @@ FINAL_DIR = "outputs/soap_notes_final"
 os.makedirs(FINAL_DIR, exist_ok=True)
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+model_name = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
 
-def extract_fields_with_llm(transcript):
+def extract_fields_with_llm(transcript, model_name = model_name):
     prompt = f"""Extract the following structured fields from the transcript below.
         Make sure to remember that certain fields might be in conversational format.
       If a field is not present, return an empty string.
@@ -33,7 +34,7 @@ Transcript:
 
 
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model=model_name,
         messages=[{"role": "user", "content": prompt}],
         temperature=0
     )

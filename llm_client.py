@@ -14,9 +14,9 @@ if not api_key:
 print("✅ API key loaded successfully.")
 
 client = OpenAI(api_key=api_key)
-
+model_name = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
 # Function to call the LLM
-def call_llm(prompt, model="gpt-3.5-turbo"):
+def call_llm(prompt, model=model_name):
     response = client.chat.completions.create(
         model=model,
         messages=[{"role": "user", "content": prompt}],

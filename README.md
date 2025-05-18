@@ -122,14 +122,13 @@ This separation of concerns makes the pipeline modular, maintainable, and safe f
 
 Pull requests welcome! Let us know if you:
 - Want to add a new EMR format
-- Need internationalization (i18n)
 - Have a better clinical prompt
 
 ---
 
 ## 👨‍⚕️ Authors
 
-Developed by [Ivanshu Kaushik],  
+Developed by Ivanshu,  
 
 
 ---
