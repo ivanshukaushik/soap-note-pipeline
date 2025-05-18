@@ -134,6 +134,20 @@ Developed by Ivanshu,
 
 ---
 
+## 📚 References
+
+- [OpenAI ChatGPT API](https://platform.openai.com/docs/guides/gpt) — Used for LLM-based generation of SOAP notes.
+- [Pandoc](https://pandoc.org/) — For converting Markdown output into PDF format.
+- [Graphviz](https://graphviz.org/) — Used for visualizing the system architecture.
+- [Med7](https://github.com/kormilitzin/med7) — SpaCy-compatible NER model for clinical entity extraction.
+- [ScispaCy](https://allenai.github.io/scispacy/) — Biomedical/clinical NLP models used in preprocessing.
+- [HL7 / FHIR Documentation](https://www.hl7.org/fhir/) — Industry standards for structuring and transmitting EMR data.
+- [Singh et al. (2025)](https://arxiv.org/abs/2501.09136) — Agentic RAG survey that informed system design choices.
+- Lewis et al. (2020). *Retrieval-Augmented Generation for Knowledge-Intensive NLP*. — Introduced the foundational RAG framework.
+- [Prompt Engineering in Healthcare (Medicine & the Machine)](https://medandmachine.com/2024/01/15/prompt-engineering-the-basics/) — Practical strategies for crafting effective medical prompts.
+
+---
+
 ## 🧾 License
 
 MIT License. Use freely, modify respectfully.
