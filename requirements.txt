@@ -1,0 +1,7 @@
+openai>=1.0.0
+numpy
+pandas
+python-dotenv
+torch
+markdown 
+pdfkit
